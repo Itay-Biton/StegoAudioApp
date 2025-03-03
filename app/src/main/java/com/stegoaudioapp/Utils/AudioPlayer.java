@@ -26,9 +26,10 @@ public class AudioPlayer {
 
     private static MediaPlayer mediaPlayer;
 
-    public static final int RECORDER_SAMPLE_RATE = 16000;
+    public static final int RECORDER_SAMPLE_RATE = 44100;
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
-    private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_8BIT;
+    private static final int BITS_PER_SAMPLE = 16;
+    private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
     private static final int BUFFER_SIZE = AudioRecord.getMinBufferSize(
             RECORDER_SAMPLE_RATE, RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
 
@@ -109,7 +110,7 @@ public class AudioPlayer {
             byte[] audioData = byteArrayOutputStream.toByteArray();
             long totalAudioLen = audioData.length;
             long totalDataLen = totalAudioLen + 36;
-            byte[] header = generateWavHeader(totalAudioLen, totalDataLen, 1, RECORDER_SAMPLE_RATE, 8);
+            byte[] header = generateWavHeader(totalAudioLen, totalDataLen, 1, RECORDER_SAMPLE_RATE, BITS_PER_SAMPLE);
 
             ByteArrayOutputStream wavOutputStream = new ByteArrayOutputStream();
             wavOutputStream.write(header, 0, 44);

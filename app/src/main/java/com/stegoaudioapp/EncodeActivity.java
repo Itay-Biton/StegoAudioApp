@@ -27,6 +27,7 @@ import com.stegoaudioapp.Utils.AudioProcessor;
 import com.stegoaudioapp.Utils.FileManager;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -203,7 +204,10 @@ public class EncodeActivity extends Fragment implements MainActivity.UploadResul
                 listView.setVisibility(View.VISIBLE);
 
                 audioFiles = FileManager.getAudioFiles(requireContext());
-                ArrayAdapter<File> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, audioFiles);
+                List<String> audioFileNames = new ArrayList<>();
+                for (File file : audioFiles)
+                    audioFileNames.add(file.getName());
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, audioFileNames);
                 listView.setAdapter(adapter);
                 break;
             case RECORD:
@@ -214,6 +218,7 @@ public class EncodeActivity extends Fragment implements MainActivity.UploadResul
                 uploadButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray, requireContext().getTheme()));
                 uploadButton.setTextColor(Color.WHITE);
                 audioButton.setVisibility(View.VISIBLE);
+                audioButton.setImageResource(R.drawable.mic);
                 listView.setVisibility(View.GONE);
                 break;
             case UPLOAD:
@@ -224,6 +229,7 @@ public class EncodeActivity extends Fragment implements MainActivity.UploadResul
                 recordButton.setBackgroundTintList(getResources().getColorStateList(R.color.gray, requireContext().getTheme()));
                 recordButton.setTextColor(Color.WHITE);
                 audioButton.setVisibility(View.VISIBLE);
+                audioButton.setImageResource(R.drawable.upload);
                 listView.setVisibility(View.GONE);
                 break;
         }

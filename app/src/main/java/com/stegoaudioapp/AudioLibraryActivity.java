@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import com.stegoaudioapp.Utils.AudioPlayer;
 import com.stegoaudioapp.Utils.FileManager;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AudioLibraryActivity extends Fragment {
@@ -53,7 +54,6 @@ public class AudioLibraryActivity extends Fragment {
         addNewBTN.setOnClickListener(v -> addNewMedia());
 
         listView.setOnItemClickListener((AdapterView<?> parent, View itemView, int position, long id) -> {
-            FileManager.printWavHeader(audioFiles.get(position));
             AudioPlayer.playFile(requireContext(), audioFiles.get(position));
         });
 
@@ -65,8 +65,12 @@ public class AudioLibraryActivity extends Fragment {
 
     private void refreshList() {
         audioFiles = FileManager.getAudioFiles(requireContext());
+        List<String> audioFileNames = new ArrayList<>();
 
-        ArrayAdapter<File> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, audioFiles);
+        for (File file : audioFiles)
+            audioFileNames.add(file.getName());
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, audioFileNames);
         listView.setAdapter(adapter);
     }
 

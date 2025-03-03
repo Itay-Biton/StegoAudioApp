@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class AudioProcessor {
 
-    private static int SAMPLE_RATE = 44100;//AudioPlayer.RECORDER_SAMPLE_RATE; // 44100
+    private static int SAMPLE_RATE = AudioPlayer.RECORDER_SAMPLE_RATE; // 44100
     private static int MARKER_FREQ = 20_000;
     private static int DATA_FREQ = 19_000;
 
@@ -20,7 +20,7 @@ public class AudioProcessor {
     private static int MARGIN_SAMPLE_COUNT = MARKER_SAMPLE_COUNT*5;
 
     private static int FREQ_THRESHOLD = 100;
-    private static int AMPLITUDE_THRESHOLD = 240;
+    private static int AMPLITUDE_THRESHOLD = 200;
 
 
     public static File encodeStringToFile(String message, File file, Context context) {
