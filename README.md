@@ -51,12 +51,6 @@
 
 ## Getting Started
 
-### Prerequisites
-
-* Android Studio (latest version)
-* Android SDK (API level 21 or higher)
-* Gradle (latest version)
-
 ### Installation
 
 1.  Clone the repository:
@@ -74,13 +68,12 @@
 ### Usage
 
 1.  **Encoding:**
-    * Select a 16-bit PCM WAV audio file.
     * Enter the text message to embed.
-    * Tap the "Encode" button.
+    * Tap the "Lock" button to confirm the text.
+    * Select a WAV audio file or record.
     * The encoded file will be created.
 2.  **Decoding:**
     * Select the encoded WAV audio file.
-    * Tap the "Decode" button.
     * The extracted text message will be displayed.
 
 ## Contact
