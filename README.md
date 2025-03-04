@@ -33,21 +33,22 @@
 
 ## Screenshots
 
-<p align="center">Main Interface</p>
+<p align="center">Screenshots</p>
 <p align="center">
    <img src="./Screenshots/Main_Screen.png" alt="Main Screen" width="200"/> 
-</p>
-
-<p align="center">Encoding Interface</p>
-<p align="center">
    <img src="./Screenshots/Encoding_Screen.png" alt="Encoding Screen" width="200"/> 
-</p>
-
-<p align="center">Decoding Interface</p>
-<p align="center">
    <img src="./Screenshots/Decoding_Screen.png" alt="Decoding Screen" width="200"/> 
 </p>
 
+<p align="center">Frequancy Analysis</p>
+<p align="center">
+   <img src="./Screenshots/Hello.png" alt="Hello recorging" width="400"/> 
+   <img src="./Screenshots/encoded_Hello.png" alt="Encoded Hello recorging" width="400"/>
+</p>
+<p align="center">
+   <img src="./Screenshots/Thank_you.png" alt="Thank you recorging" width="400"/>
+   <img src="./Screenshots/encoded_thank_you.png" alt="Encoded Thank you recorging" width="400"/>
+</p>
 
 ## Getting Started
 
