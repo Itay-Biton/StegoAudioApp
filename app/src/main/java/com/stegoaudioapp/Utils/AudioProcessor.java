@@ -19,8 +19,8 @@ public class AudioProcessor {
     private static int DATA_BIT_SAMPLE_COUNT = calculateSampleCount(DATA_FREQ);
     private static int MARGIN_SAMPLE_COUNT = MARKER_SAMPLE_COUNT*5;
 
-    private static int FREQ_THRESHOLD = 100;
-    private static int AMPLITUDE_THRESHOLD = 200;
+    private static int FREQ_THRESHOLD = 50;
+    private static int AMPLITUDE_THRESHOLD = 240;
 
 
     public static File encodeStringToFile(String message, File file, Context context) {
@@ -28,7 +28,7 @@ public class AudioProcessor {
         short[] audioSamples = extractAudioSamples(file);
         int index = MARGIN_SAMPLE_COUNT;
         addMarker(audioSamples, index);
-        index += MARKER_SAMPLE_COUNT;
+        index += 2*MARKER_SAMPLE_COUNT;
         Log.d("pttt", "Start marker "+index);
         for (byte messageBit : messageBits) {
             if (messageBit == 1) {
@@ -46,7 +46,7 @@ public class AudioProcessor {
 
     public static String decodeFileToMessage(File file) {
         short[] audioSamples = extractAudioSamples(file);
-        int startIndex = (int) (findMarker(audioSamples, 0) + MARKER_SAMPLE_COUNT*1.2);
+        int startIndex = (int) (findMarker(audioSamples, 0) + MARKER_SAMPLE_COUNT*2.2);
         Log.d("pttt", "startIndex "+startIndex);
         int endIndex = (int) (findMarker(audioSamples, startIndex+MARKER_SAMPLE_COUNT) + MARKER_SAMPLE_COUNT*0.3);
         Log.d("pttt", "End marker "+endIndex);

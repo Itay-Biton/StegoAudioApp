@@ -123,7 +123,7 @@ public class DecodeActivity extends Fragment implements MainActivity.UploadResul
             AudioPlayer.playFile(requireContext(),currentFile);
         });
         shareButton.setOnClickListener(v -> {
-            // Implement share logic here
+            FileManager.shareFile(requireContext(), currentFile);
         });
         audioButton.setOnClickListener(v -> {
             switch (inputMode) {

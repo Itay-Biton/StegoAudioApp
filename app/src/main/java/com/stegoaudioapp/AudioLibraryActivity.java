@@ -54,6 +54,7 @@ public class AudioLibraryActivity extends Fragment {
         addNewBTN.setOnClickListener(v -> addNewMedia());
 
         listView.setOnItemClickListener((AdapterView<?> parent, View itemView, int position, long id) -> {
+            FileManager.printWavHeader(audioFiles.get(position));
             AudioPlayer.playFile(requireContext(), audioFiles.get(position));
         });
 
@@ -76,6 +77,7 @@ public class AudioLibraryActivity extends Fragment {
 
     private void addNewMedia() {
         FileManager.uploadAudioFile(requireContext(), uploadLauncher);
+        refreshList();
     }
 
     private void deleteAudio(File file) {

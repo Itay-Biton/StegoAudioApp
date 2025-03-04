@@ -130,7 +130,9 @@ public class EncodeActivity extends Fragment implements MainActivity.UploadResul
         playButton.setOnClickListener(v -> {
             AudioPlayer.playFile(requireContext(),currentFile);
         });
-        shareButton.setOnClickListener(v -> {});
+        shareButton.setOnClickListener(v -> {
+            FileManager.shareFile(requireContext(), currentFile);
+        });
         audioButton.setOnClickListener(v -> {
             switch (inputMode) {
                 case CHOOSE:
